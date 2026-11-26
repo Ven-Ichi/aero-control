@@ -1,0 +1,29 @@
+name: Windows build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and run offline tests
+        shell: pwsh
+        run: pwsh -NoProfile -File aero-control/build.ps1 -Test
+      - name: Upload standalone executable
+        uses: actions/upload-artifact@v4
+        with:
+          name: AeroControl-windows-x64
+          path: |
+            aero-control/dist/AeroControl-0.3.0/AeroControl.exe
+            aero-control/dist/AeroControl-0.3.0/README.md
+            aero-control/dist/AeroControl-0.3.0/LICENSE
+          if-no-files-found: error
+          retention-days: 14

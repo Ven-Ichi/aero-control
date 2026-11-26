@@ -1,0 +1,28 @@
+# Acer's software and third-party analysis artifacts (never publish)
+app-analysis-3020/
+official-3020/
+design-concepts/
+NitroSense_Acer_3.01.3020_official.zip
+NitroSense-3020-x64.appx
+rea-*.json
+service-before-repair.json
+service-repair-result.json
+Start-NitroSenseService.ps1
+
+# Session test outputs
+diagnostics.txt
+probe-*.txt
+fan-*.txt
+fan-*.json
+final-verification.json
+
+# Build output and test evidence
+aero-control/dist/
+aero-control/test-results/
+*.exe
+
+# Vendor IL dumps and session tooling (decompiled Acer code — do not publish)
+hardware-research/
+docs/superpowers/
+.superpowers/
+graphify-out/
